@@ -1,0 +1,29 @@
+development-sq:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: app_dev
+  pool: 5
+  host: localhost
+  username: app_dev
+  password: app_dev
+
+test:
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: app_live
+  pool: 5
+  host: localhost
+  username: app_live
+  password: app_live

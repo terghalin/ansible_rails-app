@@ -1,0 +1,3 @@
+MAIL_SMTP_USERNAME: '{{MAIL_SMTP_USERNAME}}'
+MAIL_SMTP_PASSWORD: '{{MAIL_SMTP_PASSWORD}}'
+secret_key_base: '{{secret_key_base}}'

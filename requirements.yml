@@ -1,0 +1,5 @@
+# Install nodejs role
+- src: SimpliField.node
+
+# Install RVM role
+- src: rvm_io.ruby

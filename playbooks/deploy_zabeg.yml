@@ -1,0 +1,25 @@
+---
+- hosts: app-releases
+  remote_user: "{{app_name}}"
+  become: yes
+  become_method: sudo
+  tasks:
+
+  - file:
+      path: "{{app_base_dir}}/shared/config"
+      recurse: yes
+      state: directory
+      owner: "{{app_name}}"
+      group: "{{app_name}}"
+
+  - name: create secret local_env in shared
+    template: src=../templates/local_env.yml dest="{{app_base_dir}}/shared/config/local_env.yml" owner="{{app_name}}" group="{{app_name}}"
+
+  - name: create database.yml in shared
+    template: src=../templates/database.yml dest="{{app_base_dir}}/shared/config/database.yml" owner="{{app_name}}" group="{{app_name}}"
+
+  - name: create secrets.yml in shared
+    template: src=../templates/secrets.yml dest="{{app_base_dir}}/shared/config/secrets.yml" owner="{{app_name}}" group="{{app_name}}"
+
+  - name: create puma.rb in shared
+    template: src=../templates/puma.rb dest="{{app_base_dir}}/shared/config/puma.rb" owner="{{app_name}}" group="{{app_name}}"

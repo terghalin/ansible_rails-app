@@ -1,0 +1,20 @@
+---
+- hosts: app-releases
+  tasks:
+  
+  - group:
+      name: "{{app_name}}"
+      state: present
+  - user:
+      name: "{{app_name}}"
+      createhome: yes
+      home: /home/"{{app_name}}"
+      comment: "{{app_name}} user"
+      group: "{{app_name}}"
+      password: "{{app_password}}"
+  - name: Allow user group to have passwordless sudo
+    lineinfile:
+      dest: /etc/sudoers
+      state: present
+      regexp: "^%{{app_name}}"
+      line: "%{{app_name}} ALL=(ALL) NOPASSWD: ALL"

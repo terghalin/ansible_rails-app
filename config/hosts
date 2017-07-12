@@ -1,0 +1,23 @@
+#--------------------
+# App Environments
+#--------------------
+[app-releases:children]
+app-pre
+app-prod
+
+[app-dev]
+somehost ansible_host=127.0.0.1
+
+[app-dev:vars]
+some_server=foo.southeast.example.com
+
+[app-pre]
+m1.host ansible_host=10.0.0.5
+
+[app-pre:vars]
+ansible_user=root
+ansible_ssh_private_key_file="~/.ssh/m1.host"
+dbname=app_live
+dbuser=app_live
+dbpassword=
+opergamer_password=
